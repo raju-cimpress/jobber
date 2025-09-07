@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { User } from './models/user.model';
 import { PrismaService } from '../prisma/prisma.service';
 import { Prisma } from '@prisma-clients/jobber-auth';
 import { hash } from 'bcryptjs';
@@ -13,7 +12,7 @@ export class UsersService {
       data: {
         ...createUserInput,
         password: await hash(createUserInput.password, 10),
-      }
+      },
     });
   }
 
