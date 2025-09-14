@@ -33,5 +33,8 @@
       "options": { "targetName": "test" },
       "exclude": ["apps/jobber-auth-e2e/**/*"]
     }
-  ]
+  ],
+  "tui": {
+    "enabled": false
+  }
 }
