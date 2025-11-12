@@ -49,6 +49,7 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
+        "port": 9230,
         "buildTarget": "jobber-jobs:build",
         "runBuildTargetDependencies": false
       },
