@@ -33,16 +33,12 @@ export class GqlAuthGuard implements CanActivate, OnModuleInit {
   canActivate(
     context: ExecutionContext
   ): boolean | Promise<boolean> | Observable<boolean> {
-    this.logger.log('Looking for token in GqlAuthGuard.canActivate:');
     const token = this.getRequest(context).cookies?.Authentication;
-    this.logger.log('Token extracted in GqlAuthGuard.canActivate:');
-    this.logger.log(token);
     if (!token) {
       return false;
     }
     return this.authService.authenticate({ token }).pipe(
       map((res) => {
-        this.logger.log('GqlAuthGuard.canActivate successful response:');
         this.getRequest(context).user = res;
         return true;
       }),
@@ -55,9 +51,6 @@ export class GqlAuthGuard implements CanActivate, OnModuleInit {
   }
 
   private getRequest(context: ExecutionContext) {
-    this.logger.log(
-      'Fetching request from ExecutionContext in GqlAuthGuard.getRequest:'
-    );
     const ctx = GqlExecutionContext.create(context);
     return ctx.getContext().req;
   }

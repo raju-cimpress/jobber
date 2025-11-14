@@ -11,13 +11,14 @@ export abstract class AbstractJob<T extends object> {
   constructor(private readonly pulsarClient: PulsarClient) {}
 
   async execute(data: T, jobTopicName: string): Promise<void> {
-    await this.validateData(data);
+    console.log(`Sending to topic: ${jobTopicName} to execute the job`);
+    console.log(data);
     if (!this.producer) {
       this.producer = await this.pulsarClient.createProducer(jobTopicName);
     }
     if (Array.isArray(data)) {
-      for (const item of data) {
-        await this.send(item);
+      for (const message of data) {
+        await this.send(message);
       }
     } else {
       await this.send(data);
@@ -26,9 +27,8 @@ export abstract class AbstractJob<T extends object> {
   }
 
   private async send(data: T): Promise<void> {
-    await this.producer.send({
-      data: serialize<T>(data),
-    });
+    await this.validateData(data);
+    await this.producer.send({ data: serialize(data) });
   }
 
   private async validateData(data: T): Promise<void> {

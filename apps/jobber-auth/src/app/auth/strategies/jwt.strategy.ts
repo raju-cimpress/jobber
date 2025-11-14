@@ -21,12 +21,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static extractJwt(request: any): string | null {
-    console.log('Extracting JWT from Request');
     if (request.cookies) {
-      console.log(request.cookies);
       return request.cookies?.Authentication;
     }
-    console.log(request);
     if (request.token) {
       return request.token;
     }

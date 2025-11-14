@@ -34,3 +34,9 @@ jobber git:(main) nx g app apps/jobber-executor
 #install the graphql type json package
 jobber git:(main) npm i graphql-type-json
 ```
+
+### Get queue data from Apache Pulsar in docker
+
+```sh
+18a7089999d6:/pulsar/bin$ ./pulsar-admin topics stats persistent://public/default/Fibonacci
+```

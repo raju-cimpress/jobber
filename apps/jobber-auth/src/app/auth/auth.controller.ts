@@ -1,4 +1,4 @@
-/* eslint-disable @nx/enforce-module-boundaries */
+ 
 import { Controller, UseGuards } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import {
@@ -20,8 +20,6 @@ export class AuthController implements AuthServiceController {
   authenticate(
     request: AuthenticateRequest & { user: TokenPayload }
   ): Promise<User> | Observable<User> | User {
-    console.log('AuthController.authenticate called with request:');
-    console.log(request);
     return this.usersService.getUser({ id: request.user.id });
   }
 }
