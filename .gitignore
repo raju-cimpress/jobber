@@ -35,6 +35,7 @@ testem.log
 /typings
 .env
 pgdata
+pulsar_data
 
 # System Files
 .DS_Store

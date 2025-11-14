@@ -1,4 +1,4 @@
-/* eslint-disable @nx/enforce-module-boundaries */
+ 
 import {
   CanActivate,
   Inject,
@@ -15,7 +15,6 @@ import {
 } from 'types/proto/auth';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { ExecutionContext } from '@nestjs/common';
-import { get } from 'http';
 
 @Injectable()
 export class GqlAuthGuard implements CanActivate, OnModuleInit {

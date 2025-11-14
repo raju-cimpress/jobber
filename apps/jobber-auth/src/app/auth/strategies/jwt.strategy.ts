@@ -3,7 +3,6 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { UsersService } from '../../users/users.service';
-import { Request } from 'express';
 import { JwtPayloadDto } from '../dto/jwt-payload.dto';
 import { User } from '../../users/models/user.model';
 
@@ -20,6 +19,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private static extractJwt(request: any): string | null {
     console.log('Extracting JWT from Request');
     if (request.cookies) {
