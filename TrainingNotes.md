@@ -29,7 +29,7 @@ jobber git:(main) npm i pulsar-client
 
 #Create new application in mono-repo for consuming/executing the message in pulsar queue
 #use @nx/nest:application
-jobber git:(main) nx g app apps/jobber-executor
+jobber git:(main) nx g app apps/executor
 
 #install the graphql type json package
 jobber git:(main) npm i graphql-type-json
@@ -39,4 +39,15 @@ jobber git:(main) npm i graphql-type-json
 
 ```sh
 18a7089999d6:/pulsar/bin$ ./pulsar-admin topics stats persistent://public/default/Fibonacci
+```
+
+### Dockerize the whole service
+
+```sh
+#Remove the end to end test projects
+nx generate @nx/workspace:remove --projectName=executor-e2e
+nx generate @nx/workspace:remove --projectName=auth-e2e
+nx generate @nx/workspace:remove --projectName=jobs-e2e
+
+
 ```
