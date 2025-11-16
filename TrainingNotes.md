@@ -89,7 +89,17 @@ jobber git:(main) npm i module-alias
 jobber git:(main) node ./dist/apps/auth/main
 
 #Test the dockerfile of individual app
-jobber git:(main) docker build -t jobs -f apps/jobs/Dockerfile .
+jobber git:(main) docker build -t jobs -f apps/jobs/Dockerfile . --no-cache
 
 jobber git:(main) docker run jobs
+
+#Use common webpack file for all the libs using webpack-merge
+jobber git:(main) npm i --save-dev webpack-merge
+```
+
+### Logging
+
+```sh
+jobber git:(main) npm i nestjs-pino pino-http
+
 ```
