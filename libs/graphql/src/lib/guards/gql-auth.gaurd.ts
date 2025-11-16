@@ -1,4 +1,3 @@
- 
 import {
   CanActivate,
   Inject,
@@ -12,7 +11,7 @@ import {
   AuthServiceClient,
   AUTH_PACKAGE_NAME,
   AUTH_SERVICE_NAME,
-} from 'types/proto/auth';
+} from '@jobber/grpc';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { ExecutionContext } from '@nestjs/common';
 
