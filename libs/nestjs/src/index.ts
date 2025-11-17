@@ -1,1 +1,2 @@
-export * from '../../nestjs/src/lib/init';
+export * from './lib/init';
+export * from './lib/logger.module';

@@ -100,6 +100,10 @@ jobber git:(main) npm i --save-dev webpack-merge
 ### Logging
 
 ```sh
+#intall packages for at root level
 jobber git:(main) npm i nestjs-pino pino-http
+
+#Pritify the logs for development
+jobber git:(main) npm i --save-dev pino-pretty
 
 ```

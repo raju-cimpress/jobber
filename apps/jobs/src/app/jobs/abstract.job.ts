@@ -3,16 +3,20 @@ import { PulsarClient, serialize } from '@jobber/pulsar';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { BadRequestException } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
 
 export abstract class AbstractJob<T extends object> {
   private producer: Producer;
   protected abstract dataClass: new () => T;
 
-  constructor(private readonly pulsarClient: PulsarClient) {}
+  constructor(
+    private readonly pulsarClient: PulsarClient,
+    private readonly logger: Logger
+  ) {}
 
   async execute(data: T, jobTopicName: string): Promise<void> {
-    console.log(`Sending to topic: ${jobTopicName} to execute the job`);
-    console.log(data);
+    this.logger.log(`Sending to topic: ${jobTopicName} to execute the job`);
+    this.logger.log(data);
     if (!this.producer) {
       this.producer = await this.pulsarClient.createProducer(jobTopicName);
     }
