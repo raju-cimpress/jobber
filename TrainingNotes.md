@@ -106,4 +106,6 @@ jobber git:(main) npm i nestjs-pino pino-http
 #Pritify the logs for development
 jobber git:(main) npm i --save-dev pino-pretty
 
+#intall uuid package for at root level
+jobber git:(main) npm i uuid
 ```

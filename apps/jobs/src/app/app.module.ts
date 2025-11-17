@@ -4,6 +4,7 @@ import { JobsModule } from './jobs.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { LoggerModule } from '@jobber/nestjs';
+import { GqlLoggerPlugin } from '@jobber/graphql';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { LoggerModule } from '@jobber/nestjs';
     JobsModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+      plugins: [new GqlLoggerPlugin()],
       playground: {
         settings: {
           'request.credentials': 'include',

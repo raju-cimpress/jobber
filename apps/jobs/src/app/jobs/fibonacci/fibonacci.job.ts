@@ -2,7 +2,6 @@ import { PulsarClient } from '@jobber/pulsar';
 import { Job } from '../../decorators/job.decorator';
 import { AbstractJob } from '../abstract.job';
 import { FibonacciData } from './fibonacci-data.message';
-import { Logger } from 'nestjs-pino';
 
 @Job({
   name: 'Fibonacci',
@@ -10,7 +9,7 @@ import { Logger } from 'nestjs-pino';
 })
 export class FibonacciJob extends AbstractJob<FibonacciData> {
   protected dataClass = FibonacciData;
-  constructor(pulsarClient: PulsarClient, logger: Logger) {
-    super(pulsarClient, logger);
+  constructor(pulsarClient: PulsarClient) {
+    super(pulsarClient);
   }
 }
