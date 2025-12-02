@@ -109,3 +109,10 @@ jobber git:(main) npm i --save-dev pino-pretty
 #intall uuid package for at root level
 jobber git:(main) npm i uuid
 ```
+
+### Kubernetes
+
+```sh
+#Elastic Container Registry
+add entry in .github/ci.yml
+```
